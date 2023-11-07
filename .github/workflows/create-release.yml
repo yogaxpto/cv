@@ -1,0 +1,40 @@
+name: Create Release with PDF
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Set up LaTeX
+        run: |
+          # Install LaTeX, pdflatex, and any required packages
+          # Example:
+          sudo apt-get update -qy
+          sudo apt-get install -qy texlive-xetex
+
+      - name: Compile LaTeX to PDF
+        run: |
+          # Compile your LaTeX document to PDF
+          # Example:
+          pdflatex -interaction=nonstopmode -halt-on-error -output-directory=. cv_latex.tex
+        working-directory: ${{ github.workspace }}
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./cv_latex.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Get Release URL
+        run: |
+            echo "Release URL: ${{ steps.create_release.outputs.url }}"
