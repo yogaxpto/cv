@@ -2,6 +2,8 @@ name: Create Release with PDF
 
 on:
   push:
+    branches:
+      - main
     tags:
       - '*'
 
