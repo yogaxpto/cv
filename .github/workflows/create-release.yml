@@ -9,8 +9,9 @@ on:
 
 jobs:
   release:
+    if: endsWith(github.ref, 'main')
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Check Out Code
         uses: actions/checkout@v2
