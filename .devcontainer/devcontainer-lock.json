@@ -1,0 +1,39 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/actionlint:1": {
+      "version": "1.0.6",
+      "resolved": "ghcr.io/devcontainers-contrib/features/actionlint@sha256:4b32bbc4aee9880f17291a1de5b9deb98fb003f00b396e148a78bf8bd6f810b6",
+      "integrity": "sha256:4b32bbc4aee9880f17291a1de5b9deb98fb003f00b396e148a78bf8bd6f810b6"
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "version": "0.0.4",
+      "resolved": "ghcr.io/devcontainers-contrib/features/zsh-plugins@sha256:df477db6ecd0dd4b4a1d3434c627a06c783a0f1c3f64c68d69d2ecdf7a1c8196",
+      "integrity": "sha256:df477db6ecd0dd4b4a1d3434c627a06c783a0f1c3f64c68d69d2ecdf7a1c8196"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "version": "2.5.1",
+      "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:9da676524999513412f2c27604d786ba0bbf3575eb1859166c5a1233f037fc08",
+      "integrity": "sha256:9da676524999513412f2c27604d786ba0bbf3575eb1859166c5a1233f037fc08"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "1.6.0",
+      "resolved": "ghcr.io/devcontainers/features/docker-outside-of-docker@sha256:63dc56535ecaed989f2e6c8ca04acb5012999cd0e19f125504350b2e075b0c2c",
+      "integrity": "sha256:63dc56535ecaed989f2e6c8ca04acb5012999cd0e19f125504350b2e075b0c2c"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "1.0.9",
+      "resolved": "ghcr.io/devcontainers/features/sshd@sha256:7f6467f25d23c47371ba59f6f3350c9de3439a4d4cdf7497ae50e8aca40bc0e0",
+      "integrity": "sha256:7f6467f25d23c47371ba59f6f3350c9de3439a4d4cdf7497ae50e8aca40bc0e0"
+    },
+    "ghcr.io/itsmechlark/features/act:1": {
+      "version": "1.1.0",
+      "resolved": "ghcr.io/itsmechlark/features/act@sha256:dacf5604a08d6a2ebb37bbc2df735cdcd7bdf739fcac1a1d7e9944f717a8bd4b",
+      "integrity": "sha256:dacf5604a08d6a2ebb37bbc2df735cdcd7bdf739fcac1a1d7e9944f717a8bd4b"
+    },
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
+      "version": "0.0.3",
+      "resolved": "ghcr.io/stuartleeks/dev-container-features/shell-history@sha256:6caee1863304394cbd58f815757a55bce3f9150a4396ca8e2703683367e919ac",
+      "integrity": "sha256:6caee1863304394cbd58f815757a55bce3f9150a4396ca8e2703683367e919ac"
+    }
+  }
+}
