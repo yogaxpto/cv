@@ -22,19 +22,11 @@
 			"version": "latest",
 			"dockerDashComposeVersion": "v2"
 		},
-		"ghcr.io/devcontainers-contrib/features/actionlint:1": {
-			"version": "latest"
-		},
 		"ghcr.io/itsmechlark/features/act:1": {
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/sshd:1": {
 			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-			"plugins": "ssh-agent npm git",
-			"omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
-			"username": "root"
 		},
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": true,

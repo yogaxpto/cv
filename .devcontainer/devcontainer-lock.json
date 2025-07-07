@@ -1,15 +1,5 @@
 {
   "features": {
-    "ghcr.io/devcontainers-contrib/features/actionlint:1": {
-      "version": "1.0.6",
-      "resolved": "ghcr.io/devcontainers-contrib/features/actionlint@sha256:4b32bbc4aee9880f17291a1de5b9deb98fb003f00b396e148a78bf8bd6f810b6",
-      "integrity": "sha256:4b32bbc4aee9880f17291a1de5b9deb98fb003f00b396e148a78bf8bd6f810b6"
-    },
-    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "version": "0.0.4",
-      "resolved": "ghcr.io/devcontainers-contrib/features/zsh-plugins@sha256:df477db6ecd0dd4b4a1d3434c627a06c783a0f1c3f64c68d69d2ecdf7a1c8196",
-      "integrity": "sha256:df477db6ecd0dd4b4a1d3434c627a06c783a0f1c3f64c68d69d2ecdf7a1c8196"
-    },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "version": "2.5.1",
       "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:9da676524999513412f2c27604d786ba0bbf3575eb1859166c5a1233f037fc08",
