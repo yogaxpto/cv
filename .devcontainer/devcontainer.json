@@ -41,7 +41,9 @@
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
 			"version": "latest"
 		}
-	}
+	},
+	
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
