@@ -3,37 +3,45 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
-    && apt-get -y install --no-install-recommends apt-utils 2>&1
 
-# Verify git and needed tools are installed
-RUN apt-get install --no-install-recommends -y git procps
+# Install system utilities
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        apt-utils \
+        git \
+        procps \
+        curl
 
-# Install Tex Live
-RUN apt-get update && apt-get -y upgrade \
-    && apt-get -y install --no-install-recommends \
-    texlive-latex-base \
-    texlive-extra-utils \
-    texlive-latex-extra \
-    biber chktex latexmk make python3-pygments python3-pkg-resources \
-    texlive-lang-chinese \
-    texlive-lang-japanese
+# Install TeX Live (largest dependency - benefits most from caching)
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
+    apt-get -y upgrade && \
+    apt-get install -y --no-install-recommends \
+        texlive-latex-base \
+        texlive-extra-utils \
+        texlive-latex-extra \
+        biber \
+        chktex \
+        latexmk \
+        make \
+        python3-pygments \
+        python3-pkg-resources
 
-# latexindent modules
-RUN apt-get install --no-install-recommends -y curl
-RUN curl -L http://cpanmin.us | perl - App::cpanminus \
-    && cpanm Log::Dispatch::File \
-    && cpanm YAML::Tiny \
-    && cpanm File::HomeDir \
-    && cpanm Unicode::GCString
+# Install latexindent Perl dependencies
+RUN --mount=type=cache,target=/root/.cpanm,sharing=locked \
+    curl -L http://cpanmin.us | perl - App::cpanminus && \
+    cpanm Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString
 
-# Clean up
-RUN apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+# Cleanup (note: NOT removing /var/lib/apt/lists/* as cache mounts make this unnecessary)
+RUN apt-get autoremove -y && \
+    apt-get clean -y
+
 ENV DEBIAN_FRONTEND=dialog \
     LANG=C.UTF-8 \
     LC_ALL=C.UTF-8
