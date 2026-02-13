@@ -16,7 +16,7 @@
         }
     },
 	"features": {
-		"ghcr.io/itsmechlark/features/act:1": {
+		"ghcr.io/itsmechlark/features/act:": {
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/common-utils:2": {
