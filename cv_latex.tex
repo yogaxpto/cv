@@ -23,11 +23,19 @@
 \documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
 
 \usepackage{helvet} % Default font is the helvetica postscript font
-%\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
 
 \usepackage{hyperref}
 
 \setlength{\textwidth}{5.1in} % Text width of the document
+
+% Custom command for consistent job entry formatting
+% Usage: \jobentry{Title}{Company}{Location}{Dates}{Description}{Tech Stack}
+\newcommand{\jobentry}[6]{%
+    \textbf{#1} \hfill #4\\
+    \textbf{#2}, #3\\
+    #5\\
+    \textbf{Tech Stack:} #6
+}
 
 \begin{document}
 
@@ -85,75 +93,63 @@
 
     \section{EXPERIENCE}
 
-    \textbf{Team Lead / AI Engineer} \hfill September 2025 - January 2026\\
-    \textbf{SalusOptima}, Remote\\
-    Led a multidisciplinary engineering team responsible for the design, development, and deployment of AI-driven solutions in the due diligence domain, leveraging Large Language Models (LLMs) to enhance risk analysis and decision-making workflows.\\
-    Actively contributed to team growth and performance through candidate evaluation, onboarding, and ongoing technical and people management, ensuring strong alignment with architectural standards and delivery goals.\\
-    Architected and implemented advanced LLM-based systems using LangChain and LangGraph, enabling complex reasoning pipelines, agentic behaviors, and multi-step orchestration workflows.\\
-    Designed and delivered knowledge-augmented AI solutions backed by Neo4j graph databases, supporting semantic search, contextual retrieval, and graph-based decision-support use cases.\\
-    Deployed and operated production AI services on Microsoft Azure, utilizing Azure Kubernetes Service (AKS) for orchestration, Azure AI Foundry for model lifecycle management, and Azure Blob Storage for scalable data persistence.\\
-    Established and enforced best practices for production-grade AI systems, with a focus on automated testing, observability, security, reliability, and horizontal scalability.\\
-
-    \textbf{Tech Stack:} Python, FastAPI, LangChain, LangGraph, Neo4j, PostgreSQL, pytest, Azure Kubernetes Service (AKS), Azure AI Foundry, Azure Blob Storage, Docker
+    \jobentry{Team Lead / AI Engineer}{SalusOptima}{Remote}{September 2025 - January 2026}{%
+Led a multidisciplinary engineering team responsible for the design, development, and deployment of AI-driven solutions in the due diligence domain, leveraging Large Language Models (LLMs) to enhance risk analysis and decision-making workflows.\\
+Actively contributed to team growth and performance through candidate evaluation, onboarding, and ongoing technical and people management, ensuring strong alignment with architectural standards and delivery goals.\\
+Architected and implemented advanced LLM-based systems using LangChain and LangGraph, enabling complex reasoning pipelines, agentic behaviors, and multi-step orchestration workflows.\\
+Designed and delivered knowledge-augmented AI solutions backed by Neo4j graph databases, supporting semantic search, contextual retrieval, and graph-based decision-support use cases.\\
+Deployed and operated production AI services on Microsoft Azure, utilizing Azure Kubernetes Service (AKS) for orchestration, Azure AI Foundry for model lifecycle management, and Azure Blob Storage for scalable data persistence.\\
+Established and enforced best practices for production-grade AI systems, with a focus on automated testing, observability, security, reliability, and horizontal scalability.%
+}{Python, FastAPI, LangChain, LangGraph, Neo4j, PostgreSQL, pytest, Azure Kubernetes Service (AKS), Azure AI Foundry, Azure Blob Storage, Docker}
 
 
-    \textbf{Principal Engineer} \hfill November 2024 - June 2025\\
-    \textbf{Masunga}, Remote\\
-    Lead the design and implementation of scalable, mission-critical systems serving diverse markets across Africa. Collaborated closely with the CTO to shape the long-term product and technology vision, aligning our roadmap with evolving client needs. Led core backend architecture and development for Paygops, a key product delivering energy and utility access solutions. Mentored cross-functional engineering teams in Paygops and custom IaC tool, instilling a strong culture of ownership and technical excellence. Improved DevOps practices, CI/CD pipelines, and observability tools to enhance system reliability and accelerate development cycles.\\
-    \textbf{Tech Stack:} Python, Flask, TypeScript, PostgreSQL, Kubernetes, Docker, GitLab CI/CD, Grafana, pytest
+    \jobentry{Principal Engineer}{Masunga}{Remote}{November 2024 - June 2025}{%
+Lead the design and implementation of scalable, mission-critical systems serving diverse markets across Africa. Collaborated closely with the CTO to shape the long-term product and technology vision, aligning our roadmap with evolving client needs. Led core backend architecture and development for Paygops, a key product delivering energy and utility access solutions. Mentored cross-functional engineering teams in Paygops and custom IaC tool, instilling a strong culture of ownership and technical excellence. Improved DevOps practices, CI/CD pipelines, and observability tools to enhance system reliability and accelerate development cycles.%
+}{Python, Flask, TypeScript, PostgreSQL, Kubernetes, Docker, GitLab CI/CD, Grafana, pytest}
 
 
-    \textbf{Senior Python Developer} \hfill November 2023 - October 2024\\
-    \textbf{VR Smart Guide}, Remote\\
-    Improved existing microservices and developed new ones to provide additional features, enabling the successful launch of the team's core product. Designed and implemented microservices to ensure secure management and processing of sensitive information, while integrating data-intensive platforms such as Airflow to streamline data workflows and enhance system scalability.\\
-    \textbf{Tech Stack:} Python, FastAPI, Flask, OpenAPI, pytest, PostgreSQL, Docker, Airflow, Grafana, GitLab CI
+    \jobentry{Senior Python Developer}{VR Smart Guide}{Remote}{November 2023 - October 2024}{%
+Improved existing microservices and developed new ones to provide additional features, enabling the successful launch of the team's core product. Designed and implemented microservices to ensure secure management and processing of sensitive information, while integrating data-intensive platforms such as Airflow to streamline data workflows and enhance system scalability.%
+}{Python, FastAPI, Flask, OpenAPI, pytest, PostgreSQL, Docker, Airflow, Grafana, GitLab CI}
 
-    \textbf{Python Lead Developer} \hfill May 2022 - November 2022\\
-    \textbf{QuickCheck}, Remote\\
-    Led a team of 7 engineers in developing the core product as a web API, serving over 1M users. Enhanced the development experience by improving CI pipelines with Semgrep rules and Docker containerization. Spearheaded the transition from a monolithic architecture to a scalable microservices-based platform. Additionally, worked on KYC and fraud detection systems, ensuring high process quality for loan approvals and disbursements.\\
-    \textbf{Tech Stack:} Python, Django Rest Framework, OpenAPI, Unittest, PostgreSQL, Docker, Firebase, Sentry, GitLab CI, Semgrep
+    \jobentry{Python Lead Developer}{QuickCheck}{Remote}{May 2022 - November 2022}{%
+Led a team of 7 engineers in developing the core product as a web API, serving over 1M users. Enhanced the development experience by improving CI pipelines with Semgrep rules and Docker containerization. Spearheaded the transition from a monolithic architecture to a scalable microservices-based platform. Additionally, worked on KYC and fraud detection systems, ensuring high process quality for loan approvals and disbursements.%
+}{Python, Django Rest Framework, OpenAPI, Unittest, PostgreSQL, Docker, Firebase, Sentry, GitLab CI, Semgrep}
 
 
-    \textbf{Backend Developer} \hfill September 2021 - May 2022\\
-    \textbf{COCUS Portugal}, Remote\\
-    Developed an internal project for a telecommunications client in Germany. Collaborated with the front-end team to deliver automation tools that enabled engineers to easily create IaC solutions. Worked on integrating Ansible to streamline and automate the IaC provisioning process.\\
-    \textbf{Tech Stack:} Python, Django Rest Framework, drf-spectacular, PostgreSQL, Docker, Ansible, GitLab CI
+    \jobentry{Backend Developer}{COCUS Portugal}{Remote}{September 2021 - May 2022}{%
+Developed an internal project for a telecommunications client in Germany. Collaborated with the front-end team to deliver automation tools that enabled engineers to easily create IaC solutions. Worked on integrating Ansible to streamline and automate the IaC provisioning process.%
+}{Python, Django Rest Framework, drf-spectacular, PostgreSQL, Docker, Ansible, GitLab CI}
 
 
-    \textbf{Project Engineer} \hfill October 2020 - November 2020\\
-    \textbf{Critical Software}, Remote\\
-    Played a key role in an MVP project focused on transferring data between services for a prominent German railway sector company. The initiative aimed to streamline data migration processes, contributing to overall operational efficiency and effectiveness.\\
-    \textbf {Tech Stack:} Python, Urllib, BeatifulSoup, Docker
+    \jobentry{Project Engineer}{Critical Software}{Remote}{October 2020 - November 2020}{%
+Played a key role in an MVP project focused on transferring data between services for a prominent German railway sector company. The initiative aimed to streamline data migration processes, contributing to overall operational efficiency and effectiveness.%
+}{Python, Urllib, BeatifulSoup, Docker}
 
 
-    \textbf{Project Engineer} \hfill August 2020 - September 2020\\
-    \textbf{Critical Software}, Remote\\
-    Created a POC for a Portuguese client in the medical sector with a device interface.\\
-    \textbf {Tech Stack:} C\#, WPF, Transact-SQL
+    \jobentry{Project Engineer}{Critical Software}{Remote}{August 2020 - September 2020}{%
+Created a POC for a Portuguese client in the medical sector with a device interface.%
+}{C\#, WPF, Transact-SQL}
 
 
-    \textbf{Project Engineer} \hfill October 2019 - August 2021\\
-    \textbf{Critical Software}, Remote\\
-    Worked closely with engineers of a German client in the railway sector to create a new tool that automates a predictive task of quality assurance. With this tool, engineers and testers could strengthen the Quality Control of the whole project and improve the development experience.\\  
-    \textbf {Tech Stack:} C++, Python, C\#, Flex \& Bison, Make, ANTLR, ASP .NET Core, Transact-SQL
+    \jobentry{Project Engineer}{Critical Software}{Remote}{October 2019 - August 2021}{%
+Worked closely with engineers of a German client in the railway sector to create a new tool that automates a predictive task of quality assurance. With this tool, engineers and testers could strengthen the Quality Control of the whole project and improve the development experience.%
+}{C++, Python, C\#, Flex \& Bison, Make, ANTLR, ASP .NET Core, Transact-SQL}
 
 
-    \textbf{Project Engineer} \hfill May 2018 - September 2019\\
-    \textbf{Critical Software}, Porto, Portugal\\
-    Revamped the front-end of a legacy web application in the financial sector. The focus of this project was to bring a modern web browsing experience for the 1.9M users. Improve the project quality by migrating any Javascript to Typescript.\\
-    \textbf {Tech Stack:} C\#, ASP.NET, LINQ, Javascript, Typescript, jQuery, Bootstrap, CSS
+    \jobentry{Project Engineer}{Critical Software}{Porto, Portugal}{May 2018 - September 2019}{%
+Revamped the front-end of a legacy web application in the financial sector. The focus of this project was to bring a modern web browsing experience for the 1.9M users. Improve the project quality by migrating any Javascript to Typescript.%
+}{C\#, ASP.NET, LINQ, Javascript, Typescript, jQuery, Bootstrap, CSS}
 
-    
-    \textbf{Full-Stack Developer} \hfill November 2017 - April 2018\\
-    \textbf{Liderteam}, Póvoa de Varzim, Portugal
-    Contributed to the development of new features across various projects, seamlessly integrated with ERP Sage X3 to deliver tailored solutions for Liderteam's clients. Involved in diverse aspects of development, spanning front-end, back-end, and mobile applications.\\
-    \textbf {Tech Stack:} C\#, ASP.NET, LINQ, Javascript, Typescript, jQuery, Bootstrap, CSS, Transact-SQL, Kalipso Studio
 
-    
-    \textbf{IT Technician} \hfill September 2015 - October 2017\\
-    \textbf{Rulevolution}, Matosinhos, Portugal
-    Initiated a project aimed at automating personnel management within the company while ensuring the successful implementation of digitalization.\\
-    \textbf {Tech Stack:} C\#, Python, .NET, WPF, Django, MySQL
+    \jobentry{Full-Stack Developer}{Liderteam}{Póvoa de Varzim, Portugal}{November 2017 - April 2018}{%
+Contributed to the development of new features across various projects, seamlessly integrated with ERP Sage X3 to deliver tailored solutions for Liderteam's clients. Involved in diverse aspects of development, spanning front-end, back-end, and mobile applications.%
+}{C\#, ASP.NET, LINQ, Javascript, Typescript, jQuery, Bootstrap, CSS, Transact-SQL, Kalipso Studio}
+
+
+    \jobentry{IT Technician}{Rulevolution}{Matosinhos, Portugal}{September 2015 - October 2017}{%
+Initiated a project aimed at automating personnel management within the company while ensuring the successful implementation of digitalization.%
+}{C\#, Python, .NET, WPF, Django, MySQL}
 
 
     %----------------------------------------------------------------------------------------
