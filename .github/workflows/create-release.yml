@@ -4,7 +4,14 @@ on:
   push:
      tags:
       - '*'
-      
+
+permissions:
+  contents: write  # Required for creating releases and uploading assets
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -45,7 +52,7 @@ jobs:
         with:
           files: ./cv_latex.pdf
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get Release URL
         run: |
