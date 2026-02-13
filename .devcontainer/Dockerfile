@@ -1,42 +1,22 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
-
-FROM ubuntu:24.04
+FROM ubuntu:24.04 AS dev_container_auto_added_stage_label
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install system utilities
-RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
-    --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-        apt-utils \
-        git \
-        procps \
-        curl
-
-# Install TeX Live (largest dependency - benefits most from caching)
+# Install system utilities and TeX Live packages
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y --no-install-recommends \
+        apt-utils \
+        git \
+        procps \
+        curl \
         texlive-latex-base \
-        texlive-extra-utils \
-        texlive-latex-extra \
-        biber \
+        texlive-latex-recommended \
+        texlive-fonts-recommended \
         chktex \
-        latexmk \
-        make \
-        python3-pygments \
-        python3-pkg-resources
-
-# Install latexindent Perl dependencies
-RUN --mount=type=cache,target=/root/.cpanm,sharing=locked \
-    curl -L http://cpanmin.us | perl - App::cpanminus && \
-    cpanm Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString
+        latexmk
 
 # Cleanup (note: NOT removing /var/lib/apt/lists/* as cache mounts make this unnecessary)
 RUN apt-get autoremove -y && \
