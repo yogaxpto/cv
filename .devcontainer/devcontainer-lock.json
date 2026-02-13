@@ -5,10 +5,10 @@
       "resolved": "ghcr.io/devcontainers/features/common-utils@sha256:9da676524999513412f2c27604d786ba0bbf3575eb1859166c5a1233f037fc08",
       "integrity": "sha256:9da676524999513412f2c27604d786ba0bbf3575eb1859166c5a1233f037fc08"
     },
-    "ghcr.io/itsmechlark/features/act:1": {
-      "version": "1.1.0",
-      "resolved": "ghcr.io/itsmechlark/features/act@sha256:dacf5604a08d6a2ebb37bbc2df735cdcd7bdf739fcac1a1d7e9944f717a8bd4b",
-      "integrity": "sha256:dacf5604a08d6a2ebb37bbc2df735cdcd7bdf739fcac1a1d7e9944f717a8bd4b"
+    "ghcr.io/itsmechlark/features/act:": {
+      "version": "1.2.1",
+      "resolved": "ghcr.io/itsmechlark/features/act@sha256:d8a6a36aa57701df123d605cbcadd47456d6c13af4bab52a77f8a61e222a3496",
+      "integrity": "sha256:d8a6a36aa57701df123d605cbcadd47456d6c13af4bab52a77f8a61e222a3496"
     },
     "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
       "version": "0.0.3",
