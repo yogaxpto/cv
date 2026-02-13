@@ -12,3 +12,10 @@ updates:
       interval: weekly
     assignees:
       - "yogaxpto"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+    assignees:
+      - "yogaxpto"
