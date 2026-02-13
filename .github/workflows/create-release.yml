@@ -11,14 +11,26 @@ jobs:
     
     steps:
       - name: Check Out Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Cache LaTeX packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/share/texlive
+            /usr/share/texmf
+            /var/lib/texmf
+          key: texlive-${{ runner.os }}-latex-recommended-${{ hashFiles('cv_latex.tex', 'res.cls') }}
+          restore-keys: |
+            texlive-${{ runner.os }}-latex-recommended-
 
       - name: Set up LaTeX
         run: |
-          # Install LaTeX, pdflatex, and any required packages
-          # Example:
           sudo apt-get update -qy
-          sudo apt-get install -qy texlive-xetex
+          sudo apt-get install -qy --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-fonts-recommended
 
       - name: Compile LaTeX to PDF
         run: |
