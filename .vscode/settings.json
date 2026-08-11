@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "cv_latex.aux": true,
+    "cv_latex.fdb_latexmk": true,
+    "cv_latex.fls": true,
+    "cv_latex.log": true,
+    "cv_latex.synctex.gz": true,
+    "%OUTDIR%": true
+  }
+}
