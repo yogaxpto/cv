@@ -24,7 +24,6 @@ A professional _Curriculum Vitae_ template written in LaTeX. Includes a VS Code 
   - `texlive-latex-recommended`
   - `texlive-fonts-recommended`
   - `latexmk`
-  - `pdflatex`
 
 ## Get Started
 
@@ -91,19 +90,29 @@ Edit [cv_latex.tex](cv_latex.tex) to customize your CV content.
 For consistent job formatting, use the custom `\jobentry` command:
 
 ```latex
-\jobentry{Job Title}{Company Name}{Location}{Start Date - End Date}
-{
-    Description of your role and achievements.
-}
-{Tech Stack: Technology1, Technology2, Technology3}
+\jobentry{Job Title}{Company Name}{Location}{Start Date -- End Date}{%
+Description of your role and achievements.%
+}{Technology1, Technology2, Technology3}
+```
+
+For a role that spans several projects, write the role header once with `\jobheader` and add one `\projectentry` per project, joined with `\\` so they stay in one block:
+
+```latex
+\jobheader{Job Title}{Company Name}{Location}{Start Date -- End Date}\\
+\projectentry{Project Name}{Start Date -- End Date}{%
+Description of the project.%
+}{Technology1, Technology2}\\
+\projectentry{Another Project}{Start Date -- End Date}{%
+Description of the project.%
+}{Technology1, Technology2}
 ```
 
 ### Available Sections
 The template includes the following sections:
 - Header with name and contact information
-- Objective/Summary
-- Technical Stack
-- Professional Experience
+- Summary
+- Skills
+- Experience
 - Education
 - Community Service
 - Languages
@@ -126,9 +135,23 @@ GitHub Actions automatically builds and publishes your CV when you push a git ta
    git tag 2026.02
    git push origin 2026.02
    ```
-3. GitHub Actions automatically compiles the LaTeX, creates a release, and attaches the PDF
+3. GitHub Actions automatically compiles the LaTeX, creates a release, and attaches the PDF as `Diogo_Santos_Martins_CV.pdf`
+
+Pushes to `main` and pull requests run the same build without releasing, so a broken document is caught before you tag.
 
 Visit the [Releases Page](../../releases) to download compiled PDFs from any tagged version.
+
+## Pre-commit Hooks
+
+Every commit is checked by [pre-commit](https://pre-commit.com/). The dev container installs the hooks automatically when it is created; outside the container, install `pre-commit` and run `pre-commit install` once.
+
+- **Compile check** — the CV must build, and no line may run past the right margin
+- **LaTeX lint** — `chktex` on `cv_latex.tex` (settings in `.chktexrc`)
+- **Spell check** — `codespell` on `.tex` and `.md` files
+- **Workflow and Dependabot validation** — schema checks on the files under `.github/`
+- **Housekeeping** — trailing whitespace, final newlines, line endings, YAML syntax, merge-conflict markers, large files
+
+Run all hooks by hand with `pre-commit run --all-files`, and update their versions with `pre-commit autoupdate`.
 
 ## Project Structure
 
@@ -144,11 +167,14 @@ cv/
 │   └── devcontainer.json     # VS Code dev container configuration
 ├── .github/
 │   └── workflows/
-│       └── create-release.yml  # Automated release workflow
+│       └── create-release.yml  # Build check and automated release workflow
+├── scripts/
+│   └── check-latex-build.sh  # Compile check used by the pre-commit hook
+├── .pre-commit-config.yaml   # Pre-commit hook configuration
+├── .chktexrc                 # LaTeX lint settings
 └── .vscode/                  # VS Code workspace settings
 ```
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
