@@ -1,0 +1,43 @@
+# Installed automatically in the dev container (see .devcontainer/devcontainer.json).
+# Run everything by hand with: pre-commit run --all-files
+# Update hook versions with:   pre-commit autoupdate
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^res\.cls$
+      - id: end-of-file-fixer
+        exclude: ^res\.cls$
+      - id: mixed-line-ending
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.39.0
+    hooks:
+      - id: check-github-workflows
+      - id: check-dependabot
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        args: [--ignore-words-list=aks]
+        files: \.(tex|md)$
+
+  - repo: local
+    hooks:
+      - id: chktex
+        name: Lint LaTeX (chktex)
+        entry: chktex -q -v0 -l .chktexrc
+        language: system
+        files: ^cv_latex\.tex$
+
+      - id: latex-build
+        name: Compile the CV and check for overfull lines
+        entry: scripts/check-latex-build.sh
+        language: system
+        files: \.(tex|cls)$
+        pass_filenames: false

@@ -1,16 +1,14 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker-compose
 {
-	"name": "Docker from Docker Compose",
+	"name": "CV (LaTeX)",
 	"dockerFile": "Dockerfile",
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"james-yu.latex-workshop",
 				"eamodio.gitlens",
-				"adamvoss.vscode-languagetool-en",
 				"valentjn.vscode-ltex",
-				"adamvoss.vscode-languagetool-pt",
 				"Gruntfuggly.todo-tree"
 			]
 		}
@@ -36,7 +34,7 @@
 			"version": "latest"
 		}
 	},
-	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && pre-commit install --install-hooks"
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.

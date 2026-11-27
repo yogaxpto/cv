@@ -1,0 +1,2 @@
+# Warning 8 (wrong dash length) misfires on date ranges such as "May 2018 -- August 2021".
+CmdLine { -n8 }

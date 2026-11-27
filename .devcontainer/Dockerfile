@@ -16,7 +16,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         texlive-latex-recommended \
         texlive-fonts-recommended \
         chktex \
-        latexmk
+        latexmk \
+        pre-commit
 
 # Cleanup (note: NOT removing /var/lib/apt/lists/* as cache mounts make this unnecessary)
 RUN apt-get autoremove -y && \
