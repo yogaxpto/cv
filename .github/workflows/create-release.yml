@@ -1,35 +1,27 @@
-name: Create Release with PDF
+name: Build CV and Release PDF
 
 on:
   push:
-     tags:
+    branches:
+      - main
+    tags:
       - '*'
+  pull_request:
 
 permissions:
   contents: write  # Required for creating releases and uploading assets
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check Out Code
         uses: actions/checkout@v7
-
-      - name: Cache LaTeX packages
-        uses: actions/cache@v6
-        with:
-          path: |
-            /usr/share/texlive
-            /usr/share/texmf
-            /var/lib/texmf
-          key: texlive-${{ runner.os }}-latex-recommended-${{ hashFiles('cv_latex.tex', 'res.cls') }}
-          restore-keys: |
-            texlive-${{ runner.os }}-latex-recommended-
 
       - name: Set up LaTeX
         run: |
@@ -41,19 +33,21 @@ jobs:
 
       - name: Compile LaTeX to PDF
         run: |
-          # Compile your LaTeX document to PDF
-          # Example:
           pdflatex -interaction=nonstopmode -halt-on-error -output-directory=. cv_latex.tex
+          cp cv_latex.pdf Diogo_Santos_Martins_CV.pdf
         working-directory: ${{ github.workspace }}
 
+      # Everything below only runs for tags; branch pushes and pull requests stop after the build check.
       - name: Create Release
         id: create_release
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v3
         with:
-          files: ./cv_latex.pdf
+          files: ./Diogo_Santos_Martins_CV.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get Release URL
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
             echo "Release URL: ${{ steps.create_release.outputs.url }}"
