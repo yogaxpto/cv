@@ -197,6 +197,12 @@
 \DeclareOption{margin}{\@margintrue}
 \DeclareOption{overlapped}{\@marginfalse}
 
+% Font sizes are handled by the article class loaded above; declaring them here
+% only stops LaTeX from reporting them as unused global options.
+\DeclareOption{10pt}{}
+\DeclareOption{11pt}{}
+\DeclareOption{12pt}{}
+
 \ExecuteOptions{overlapped,centered}
 \ProcessOptions\relax
 

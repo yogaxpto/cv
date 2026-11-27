@@ -22,19 +22,39 @@
 
 \documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
 
-\usepackage{helvet} % Default font is the helvetica postscript font
-
 \usepackage{hyperref}
+\hypersetup{
+    pdftitle={Diogo Santos Martins -- CV},
+    pdfauthor={Diogo Santos Martins}
+}
 
 \setlength{\textwidth}{5.1in} % Text width of the document
+
+\emergencystretch=1em % Let lines with long unbreakable words stretch instead of overflowing the margin
+
+% Header lines of a job: title and dates, then company and location
+% Usage: \jobheader{Title}{Company}{Location}{Dates}
+\newcommand{\jobheader}[4]{%
+    \textbf{#1} \hfill #4\\
+    \textbf{#2}, #3%
+}
 
 % Custom command for consistent job entry formatting
 % Usage: \jobentry{Title}{Company}{Location}{Dates}{Description}{Tech Stack}
 \newcommand{\jobentry}[6]{%
-    \textbf{#1} \hfill #4\\
-    \textbf{#2}, #3\\
+    \jobheader{#1}{#2}{#3}{#4}\\
     #5\\
     \textbf{Tech Stack:} #6
+}
+
+% A project within a job, for roles that span several projects.
+% Place these after a \jobheader, ending every line but the last with \\ so the
+% projects stay together as one block.
+% Usage: \projectentry{Project Name}{Dates}{Description}{Tech Stack}
+\newcommand{\projectentry}[4]{%
+    \textbf{\textit{#1}} \hfill \textit{#2}\\
+    #3\\
+    \textbf{Tech Stack:} #4
 }
 
 \begin{document}
@@ -45,7 +65,7 @@
 
 \moveleft.5\hoffset\centerline{\large\bf Diogo Santos Martins} % Your name at the top
 
-\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt' % chktex 1
 
 \moveleft.5\hoffset\centerline{Porto, Portugal}
 \moveleft.5\hoffset\centerline{\href{mailto:yogaxpto@gmail.com}{yogaxpto@gmail.com}}
@@ -114,7 +134,7 @@ Established and enforced best practices for production-grade AI systems, with a 
 
 
     \jobentry{Principal Engineer}{Masunga}{Remote}{November 2024 -- June 2025}{%
-Led the design and implementation of scalable, mission-critical systems serving diverse markets across Africa. Collaborated closely with the CTO to shape the long-term product and technology vision, aligning our roadmap with evolving client needs. Led core backend architecture and development for Paygops, a key product delivering energy and utility access solutions. Mentored cross-functional engineering teams in Paygops and custom IaC tool, instilling a strong culture of ownership and technical excellence. Improved DevOps practices, CI/CD pipelines, and observability tools to enhance system reliability and accelerate development cycles.%
+Led the design and implementation of scalable, mission-critical systems serving diverse markets across Africa. Collaborated closely with the CTO to shape the long-term product and technology vision, aligning our roadmap with evolving client needs. Led core backend architecture and development for Paygops, a key product delivering energy and utility access solutions. Mentored cross-functional engineering teams in Paygops and a custom IaC tool, instilling a strong culture of ownership and technical excellence. Improved DevOps practices, CI/CD pipelines, and observability tools to enhance system reliability and accelerate development cycles.%
 }{Python, Flask, TypeScript, PostgreSQL, Kubernetes, Docker, GitLab CI/CD, Grafana, pytest}
 
 
@@ -124,7 +144,7 @@ Improved existing microservices and developed new ones to provide additional fea
 
     \jobentry{Python Lead Developer}{QuickCheck}{Remote}{May 2022 -- November 2022}{%
 Led a team of 7 engineers in developing the core product as a web API, serving over 1M users. Enhanced the development experience by improving CI pipelines with Semgrep rules and Docker containerization. Spearheaded the transition from a monolithic architecture to a scalable microservices-based platform. Additionally, worked on KYC and fraud detection systems, ensuring high process quality for loan approvals and disbursements.%
-}{Python, Django Rest Framework, OpenAPI, Unittest, PostgreSQL, Docker, Firebase, Sentry, GitLab CI, Semgrep}
+}{Python, Django Rest Framework, OpenAPI, unittest, PostgreSQL, Docker, Firebase, Sentry, GitLab CI, Semgrep}
 
 
     \jobentry{Backend Developer}{COCUS Portugal}{Remote}{September 2021 -- May 2022}{%
@@ -132,22 +152,18 @@ Developed an internal project for a telecommunications client in Germany. Collab
 }{Python, Django Rest Framework, drf-spectacular, PostgreSQL, Docker, Ansible, GitLab CI}
 
 
-    \jobentry{Project Engineer}{Critical Software}{Remote}{October 2020 -- November 2020}{%
-Played a key role in an MVP project focused on transferring data between services for a prominent German railway sector company. The initiative aimed to streamline data migration processes, contributing to overall operational efficiency and effectiveness.%
-}{Python, Urllib, BeautifulSoup, Docker}
-
-
-    \jobentry{Project Engineer}{Critical Software}{Remote}{August 2020 -- September 2020}{%
-Created a POC for a Portuguese client in the medical sector with a device interface.%
-}{C\#, WPF, Transact-SQL}
-
-
-    \jobentry{Project Engineer}{Critical Software}{Remote}{October 2019 -- August 2021}{%
+    \jobheader{Project Engineer}{Critical Software}{Porto, Portugal / Remote}{May 2018 -- August 2021}\\
+    Delivered four client projects across the railway, medical and financial sectors.\\
+    \projectentry{Railway Quality-Assurance Tooling}{October 2019 -- August 2021}{%
 Worked closely with engineers of a German client in the railway sector to create a new tool that automates a predictive task of quality assurance. With this tool, engineers and testers could strengthen the Quality Control of the whole project and improve the development experience.%
-}{C++, Python, C\#, Flex \& Bison, Make, ANTLR, ASP .NET Core, Transact-SQL}
-
-
-    \jobentry{Project Engineer}{Critical Software}{Porto, Portugal}{May 2018 -- September 2019}{%
+}{C++, Python, C\#, Flex \& Bison, Make, ANTLR, ASP.NET Core, Transact-SQL}\\
+    \projectentry{Railway Data-Migration MVP}{October 2020 -- November 2020}{%
+Played a key role in an MVP project focused on transferring data between services for a prominent German railway sector company. The initiative aimed to streamline data migration processes, contributing to overall operational efficiency and effectiveness.%
+}{Python, Urllib, BeautifulSoup, Docker}\\
+    \projectentry{Medical Device POC}{August 2020 -- September 2020}{%
+Created a POC for a Portuguese client in the medical sector with a device interface.%
+}{C\#, WPF, Transact-SQL}\\
+    \projectentry{Financial Web Application}{May 2018 -- September 2019}{%
 Revamped the front-end of a legacy web application in the financial sector. The focus of this project was to bring a modern web browsing experience for the 1.9M users. Improve the project quality by migrating any Javascript to Typescript.%
 }{C\#, ASP.NET, LINQ, Javascript, Typescript, jQuery, Bootstrap, CSS}
 
@@ -159,7 +175,7 @@ Contributed to the development of new features across various projects, seamless
 
     \jobentry{IT Technician}{Rulevolution}{Matosinhos, Portugal}{September 2015 -- October 2017}{%
 Initiated a project aimed at automating personnel management within the company while ensuring the successful implementation of digitalization.%
-}{C\#, Python, .NET, WPF, Django, MySQL}
+}{C\#, Python, .NET, WPF, Django, MySQL} % chktex 26
 
 
     %----------------------------------------------------------------------------------------
@@ -178,8 +194,8 @@ Initiated a project aimed at automating personnel management within the company 
 
     \section{COMMUNITY \\ SERVICE}
 
-    Volunteer since 2014 at "C.A.S.A.-Centro de Apoio aos Sem Abrigo", an organization that assists individuals experiencing homelessness and those living in poverty by addressing their basic necessities.\\
-    TedxOporto 2015 volunteer, helped the organization of the event. Over 800 people attend the event each year.
+    Volunteer since 2014 at ``C.A.S.A.-Centro de Apoio aos Sem Abrigo'', an organization that assists individuals experiencing homelessness and those living in poverty by addressing their basic necessities.\\
+    TEDxOporto 2015 volunteer, helped the organization of the event. Over 800 people attend the event each year.
 
     %----------------------------------------------------------------------------------------
     %   language section
